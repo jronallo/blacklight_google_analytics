@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//
+// Required by Blacklight
+//= require jquery-ui
+//= require blacklight/blacklight
 //= require_tree .
+
+//= require blacklight_google_analytics
+//= require google_analytics

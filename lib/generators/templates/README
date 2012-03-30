@@ -1,0 +1,1 @@
+Edit `config/initializers/blacklight_google_analytics.rb` to include your own Google Web id.
