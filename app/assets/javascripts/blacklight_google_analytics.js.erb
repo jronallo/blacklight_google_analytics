@@ -1,0 +1,48 @@
+$(function () {
+  
+  BlacklightGoogleAnalytics = {}
+  
+  BlacklightGoogleAnalytics.pause = function(){
+    // pause to allow google script to run before going to new page
+		var date = new Date();
+		var curDate = null;
+		do {
+			curDate = new Date();
+		} while(curDate-date < 300);
+  }
+  
+  BlacklightGoogleAnalytics.console_log_error = function(err, values){
+    <% if Rails.env == 'development' %>
+    // good place to log in development
+    console.log(err);
+    console.log(values);
+    <% end %>
+  }
+  
+	 $('a').click(function () {
+		// tell analytics to save event
+		try {
+      var identifier = $(this).parents('[id]:first').get(0).id;
+      var action = 'clicked';
+      var label = ($(this).text() || $(this).children('img:first').attr('alt'));
+			_gaq.push(['_trackEvent', identifier, action, label]);
+		} catch (err) {
+      BlacklightGoogleAnalytics.console_log_error(err, [identifier, action, label]);
+    }
+    BlacklightGoogleAnalytics.pause();		
+	});  
+  
+  //facet expand/collapse
+  $('#facets h3').live('click', function(){
+    var label = $(this).text();
+    var heading_values = ['facets', 'collapse_expand', label];
+    try{
+      _gaq.push(['_trackEvent'].concat(heading_values));
+    } catch(err) {  
+      BlacklightGoogleAnalytics.console_log_error(err, heading_values);
+    }
+    BlacklightGoogleAnalytics.pause();
+  });
+  
+  
+});
