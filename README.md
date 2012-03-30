@@ -36,7 +36,12 @@ This event tracking information shows up in Google Analytics under Content > Eve
 
 # Customizing Blacklight for event tracking
 
-TODO
+You can add other links (e.g. `a` elements) to the page and they will be tracked
+automatically. If you give your link an `id` attribute, that will be used for
+the category. Otherwise, parent elements will be searched for an `id` attribute
+to use as the category.
+
+You may also add your own jQuery click handlers to add more event tracking. 
 
 # Author
 
