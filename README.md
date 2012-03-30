@@ -9,14 +9,19 @@ A gem plugin which adds support for Google Analytics and event tracking to a
 2. Add `gem 'blacklight_google_analytics'` to your `Gemfile`
 3. Run the generator: `rails g blacklight_google_analytics`
 4. Edit `config/initializers/blacklight_google_analytics.rb` to include your own Google Web id.
+  You will need a [Google Analytics account](http://www.google.com/analytics/) and
+  profile.
 
 # Usage
 
-Google Analytics tracking code is only turned on in production. In development
-tracking is sent to the console log to allow you to see what parameters will
+Google Analytics tracking code is only turned on in production. Both page tracking
+and Blacklight-specific event tracking is turned on.
+
+In development tracking is sent to the console log to allow you to see what parameters will
 be sent to Google Analytics.
 
-Here's example output to the browser console when clicking on the Format facet,
+Here's an example of event tracking. This is the output to the browser console 
+when clicking on the Format facet,
 selecting the "Book" facet value, and then removing it:
 
 ```
@@ -24,6 +29,14 @@ selecting the "Book" facet value, and then removing it:
 ["facets", "Format", "Book"]
 ["facets", "Format", "[remove]"]
 ```
+
+These parameters are the category, action, and label according to the Google
+Analytics [event tracking documentation](http://code.google.com/apis/analytics/docs/tracking/eventTrackerGuide.html).
+This event tracking information shows up in Google Analytics under Content > Events.
+
+# Customizing Blacklight for event tracking
+
+TODO
 
 # Author
 
