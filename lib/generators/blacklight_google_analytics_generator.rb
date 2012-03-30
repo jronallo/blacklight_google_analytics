@@ -8,8 +8,7 @@ class BlacklightGoogleAnalyticsGenerator < Rails::Generators::Base
       "# Change to your Google Web id \nBlacklightGoogleAnalytics.web_property_id = 'UA-XXXXX-X'"
   end
   
-  def add_javascripts_to_applicationjs
-    add_file 'app/assets/javascripts/application.js'
+  def add_javascripts_to_applicationjs    
     append_to_file 'app/assets/javascripts/application.js',
       "\n//= require blacklight_google_analytics\n//= require google_analytics"
   end
