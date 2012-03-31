@@ -12,7 +12,8 @@ A gem plugin which adds support for Google Analytics and event tracking to a
   (see next step) and adds a couple lines to `app/assets/javascripts/application.js`.
 4. Edit `config/initializers/blacklight_google_analytics.rb` to include your own Google Web id.
   You will need a [Google Analytics account](http://www.google.com/analytics/) and
-  profile.
+  profile. You will not need to copy in the async snippet. You will need to
+  verify your profile.
 
 # Usage
 
