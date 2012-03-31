@@ -8,7 +8,8 @@ A gem plugin which adds support for Google Analytics and event tracking to a
 1. Install [Blacklight](https://github.com/projectblacklight/blacklight) using the
   [Quickstart guide](https://github.com/projectblacklight/blacklight/wiki/Quickstart).
 2. Add `gem 'blacklight_google_analytics'` to your `Gemfile`
-3. Run the generator: `rails g blacklight_google_analytics`
+3. Run the generator: `rails g blacklight_google_analytics`. This adds an initializer
+  (see next step) and adds a couple lines to `app/assets/javascripts/application.js`.
 4. Edit `config/initializers/blacklight_google_analytics.rb` to include your own Google Web id.
   You will need a [Google Analytics account](http://www.google.com/analytics/) and
   profile.
@@ -40,8 +41,8 @@ This event tracking information shows up in Google Analytics under Content > Eve
 
 You can add other links (e.g. `a` elements) to the page and they will be tracked
 automatically. If you give your link an `id` attribute, that will be used for
-the category. Otherwise, parent elements will be searched for an `id` attribute
-to use as the category.
+the category. Otherwise, the id of the first parent element with an id attribute 
+will be used as the category.
 
 You may also add your own jQuery click handlers to add more event tracking. 
 Look at the current handlers to see how to set up a tracking event and enable
