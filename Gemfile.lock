@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    blacklight_google_analytics (0.0.1.pre2)
+    blacklight_google_analytics (0.0.1.pre3)
 
 GEM
   remote: http://rubygems.org/
