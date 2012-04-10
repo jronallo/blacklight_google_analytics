@@ -1,4 +1,5 @@
 require 'blacklight_google_analytics/version'
+require 'blacklight_google_analytics/controller_extra_head'
 
 module BlacklightGoogleAnalytics
   
