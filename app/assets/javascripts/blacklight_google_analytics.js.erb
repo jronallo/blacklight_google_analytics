@@ -72,6 +72,17 @@ $(function () {
       BlacklightGoogleAnalytics.console_log_error(err, heading_values);
     }
   });
+  
+  //which number in the search results was clicked on?
+  $('h3.index_title a').click(function(){
+    var result_number = $(this).data('counter');
+    var heading_values = ['result_number', 'click', result_number];
+    try{
+      _gaq.push(['_trackEvent'].concat(heading_values));
+    } catch(err) {  
+      BlacklightGoogleAnalytics.console_log_error(err, heading_values);
+    }
+  });
     
   
 });
