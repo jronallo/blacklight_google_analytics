@@ -4,8 +4,19 @@ class BlacklightGoogleAnalyticsGenerator < Rails::Generators::Base
   desc "Blacklight Google Analytics Generator"    
   
   def create_blacklight_google_analytics_initializer
-    initializer "blacklight_google_analytics.rb", 
-      "# Change to your Google Web id \nBlacklightGoogleAnalytics.web_property_id = 'UA-XXXXX-X'"
+    initializer "blacklight_google_analytics.rb" do
+<<EOF
+# Change to your Google Web id 
+BlacklightGoogleAnalytics.web_property_id = case Rails.env.to_s
+when 'development'
+  nil
+when 'test'
+  nil
+else
+  'UA-XXXXX-X'
+end      
+EOF
+    end
   end
   
   def add_javascripts_to_applicationjs  
@@ -22,7 +33,7 @@ class BlacklightGoogleAnalyticsGenerator < Rails::Generators::Base
   def add_google_analytics_javascript_via_controller_extra_head
     catalog_controller_file = 'app/controllers/catalog_controller.rb'
     catalog_controller = File.binread catalog_controller_file
-    insert_line = "\ninclude BlacklightGoogleAnalytics::ControllerExtraHead\n"
+    insert_line = "\n  include BlacklightGoogleAnalytics::ControllerExtraHead\n"
     if catalog_controller.include?(insert_line)
       say_status("skipped", "add google analytics javascript via controller extra head", :yellow)
     else
